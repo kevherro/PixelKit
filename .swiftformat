@@ -1,0 +1,23 @@
+--swiftversion 6.0
+
+# file options
+
+--exclude .build
+
+# format options
+
+--ifdef no-indent
+--indent 2
+--extensionacl on-declarations
+--linebreaks lf
+--maxwidth 90
+--patternlet inline
+--self insert
+--stripunusedargs closure-only
+--wraparguments before-first
+
+# rules
+
+--disable andOperator
+--disable blankLinesAroundMark
+--disable wrapMultilineStatementBraces

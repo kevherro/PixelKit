@@ -14,11 +14,13 @@
 import SwiftUI
 
 extension PixelKit.Indicators {
-  /// A customizable progress bar that visually represents progress through a series of
-  /// steps.
+  /// A customizable progress bar that visually represents progress through a
+  /// series of steps.
   ///
-  /// `ProgressBar` provides a simple, animated way to show progress in your app.
-  /// It's highly customizable, allowing you to set the color, size, and number of steps.
+  /// `ProgressBar` provides a simple,
+  /// animated way to show progress in your app.
+  /// It's highly customizable, allowing you to set the color, size,
+  /// and number of steps.
   ///
   /// Example usage:
   /// ```swift
@@ -39,15 +41,34 @@ extension PixelKit.Indicators {
 
     /// The total number of steps in the progress sequence.
     /// This determines when the progress bar is considered complete.
-    let totalSteps: Int
+    private let totalSteps: Int
 
     /// The color of the progress indicator.
     /// The background will be a gray version of this color.
-    let color: Color
+    private let color: Color
 
     /// The size of the progress bar.
     /// This determines both the width and height of the bar.
-    let size: CGSize
+    private let size: CGSize
+
+    /// Initializes a new `ProgressBar`.
+    ///
+    /// - Parameters:
+    ///   - currentStep: A binding to the current step in the progress sequence.
+    ///   - totalSteps: The total number of steps in the progress sequence.
+    ///   - color: The color of the progress indicator.
+    ///   - size: The size of the progress bar.
+    public init(
+      currentStep: Binding<Int>,
+      totalSteps: Int,
+      color: Color,
+      size: CGSize
+    ) {
+      self._currentStep = currentStep
+      self.totalSteps = totalSteps
+      self.color = color
+      self.size = size
+    }
 
     public var body: some View {
       ZStack(alignment: .leading) {

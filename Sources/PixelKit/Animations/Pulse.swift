@@ -33,22 +33,46 @@ extension PixelKit.Animations {
   /// ```
   public struct Pulse: View {
     /// The color of the pulsing circle.
-    let color: Color
+    private let color: Color
 
     /// The duration of one pulse animation cycle.
-    let duration: Double
+    private let duration: Double
 
     /// The scale factor the circle reaches at the end of the animation.
-    let finalScale: CGFloat
+    private let finalScale: CGFloat
 
     /// The max width of the circle before animation begins.
-    let maxWidth: CGFloat
+    private let maxWidth: CGFloat
 
     /// Determines whether the pulse animation repeats indefinitely.
-    let repeatForever: Bool
+    private let repeatsForever: Bool
 
     /// Tracks whether the animation is currently active.
     @State private var isAnimating = false
+
+    /// Initializes a new `Pulse`.
+    ///
+    /// - Parameters:
+    ///   - color: The color of the pulsing circle.
+    ///   - duration: The duration of one pulse cycle in seconds.
+    ///   - finalScale: The scale factor the circle reaches at the end of the
+    /// animation.
+    ///   - repeatsForever: If true, the pulse repeats indefinitely. If false,
+    /// it pulses only once.
+    ///   - maxWidth: The max width of the circle before animation begins.
+    public init(
+      color: Color = .white,
+      duration: Double = 0.7,
+      finalScale: CGFloat = 2.0,
+      repeatsForever: Bool = false,
+      maxWidth: CGFloat
+    ) {
+      self.color = color
+      self.duration = duration
+      self.finalScale = finalScale
+      self.repeatsForever = repeatsForever
+      self.maxWidth = maxWidth
+    }
 
     public var body: some View {
       Circle()
@@ -66,7 +90,7 @@ extension PixelKit.Animations {
 
     private var animation: Animation {
       let baseAnimation = Animation.easeOut(duration: self.duration)
-      return self.repeatForever ? baseAnimation
+      return self.repeatsForever ? baseAnimation
         .repeatForever(autoreverses: false) : baseAnimation
     }
   }

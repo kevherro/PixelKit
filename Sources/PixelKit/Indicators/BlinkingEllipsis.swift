@@ -17,8 +17,8 @@ import SwiftUI
 extension PixelKit.Indicators {
   /// A view that displays a blinking ellipsis animation.
   ///
-  /// `BlinkingEllipsis` creates an animated ellipsis effect using three circles that
-  /// blink in sequence.
+  /// `BlinkingEllipsis` creates an animated ellipsis effect using three circles
+  /// that blink in sequence.
   /// This can be useful for indicating loading states,
   /// ongoing processes, or any scenario where a subtle,
   /// repeating animation is desired.

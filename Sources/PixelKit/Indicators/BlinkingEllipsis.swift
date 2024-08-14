@@ -32,18 +32,17 @@ extension PixelKit.Indicators {
     @State private var currentIndex = 0
 
     /// The color of the blinking circles.
-    let color: Color
+    private let color: Color
 
     /// The timer that drives the animation,
     /// determining how frequently the circles blink.
-    let timer: Publishers.Autoconnect<Timer.TimerPublisher>
+    private let timer: Publishers.Autoconnect<Timer.TimerPublisher>
 
-    /// Initializes a new `BlinkingEllipsis` view.
+    /// Initializes a new `BlinkingEllipsis`.
     ///
     /// - Parameters:
-    ///   - color: The color of the blinking circles. Defaults to `.primary`.
-    ///   - interval: The time interval between each blink, in seconds. Defaults to 0.5
-    /// seconds.
+    ///   - color: The color of the blinking circles
+    ///   - interval: The time interval between each blink, in seconds.
     public init(
       color: Color = .primary,
       interval: Double = 0.5

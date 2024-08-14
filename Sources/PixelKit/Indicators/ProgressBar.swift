@@ -39,17 +39,17 @@ extension PixelKit.Indicators {
 
     /// The total number of steps in the progress sequence.
     /// This determines when the progress bar is considered complete.
-    let totalSteps: Int
+    private let totalSteps: Int
 
     /// The color of the progress indicator.
     /// The background will be a gray version of this color.
-    let color: Color
+    private let color: Color
 
     /// The size of the progress bar.
     /// This determines both the width and height of the bar.
-    let size: CGSize
+    private let size: CGSize
 
-    /// Initializes a new progress bar.
+    /// Initializes a new `ProgressBar`.
     ///
     /// - Parameters:
     ///   - currentStep: A binding to the current step in the progress sequence.
@@ -94,11 +94,11 @@ extension PixelKit.Indicators {
 // MARK: - Preview
 
 struct ProgressBar_Previews: PreviewProvider {
-  static let totalSteps: Int = 3
-  static let color: Color = .green
-  static let size: CGSize = CGSizeMake(150, 10)
-
   static var previews: some View {
+    let totalSteps = 3
+    let color: Color = .green
+    let size: CGSize = CGSizeMake(150, 10)
+
     VStack(spacing: 20) {
       PixelKit.Indicators.ProgressBar(
         currentStep: Binding.constant(0),

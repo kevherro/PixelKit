@@ -22,6 +22,13 @@ public struct PixelKit {
 }
 
 extension PixelKit {
+  /// Namespace for animation-related components and modifiers.
+  ///
+  /// This struct contains various animated UI elements and
+  /// SwiftUI view modifiers that can be used to add dynamic
+  /// visual effects to your app's interface.
+  public struct Animations {}
+
   /// Namespace for indicator components.
   ///
   /// This struct contains various indicators that can

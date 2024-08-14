@@ -39,34 +39,15 @@ extension PixelKit.Indicators {
 
     /// The total number of steps in the progress sequence.
     /// This determines when the progress bar is considered complete.
-    private let totalSteps: Int
+    let totalSteps: Int
 
     /// The color of the progress indicator.
     /// The background will be a gray version of this color.
-    private let color: Color
+    let color: Color
 
     /// The size of the progress bar.
     /// This determines both the width and height of the bar.
-    private let size: CGSize
-
-    /// Initializes a new `ProgressBar`.
-    ///
-    /// - Parameters:
-    ///   - currentStep: A binding to the current step in the progress sequence.
-    ///   - totalSteps: The total number of steps in the progress sequence.
-    ///   - color: The color of the progress indicator.
-    ///   - size: The size of the progress bar.
-    public init(
-      currentStep: Binding<Int>,
-      totalSteps: Int,
-      color: Color,
-      size: CGSize
-    ) {
-      self._currentStep = currentStep
-      self.totalSteps = totalSteps
-      self.color = color
-      self.size = size
-    }
+    let size: CGSize
 
     public var body: some View {
       ZStack(alignment: .leading) {

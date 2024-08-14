@@ -73,13 +73,3 @@ extension PixelKit.Indicators {
     }
   }
 }
-
-// MARK: - Preview
-
-struct BlinkingEllipsis_Previews: PreviewProvider {
-  static var previews: some View {
-    PixelKit.Indicators.BlinkingEllipsis(color: Color.yellow, interval: 0.2)
-      .previewLayout(.sizeThatFits)
-      .padding()
-  }
-}

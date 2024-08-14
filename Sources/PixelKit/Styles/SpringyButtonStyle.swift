@@ -114,31 +114,3 @@ extension PixelKit.Styles {
     }
   }
 }
-
-// MARK: - Preview
-
-struct SpringyButtonStyle_Previews: PreviewProvider {
-  static var previews: some View {
-    let width: CGFloat = 100
-    let height: CGFloat = 50
-    let cornerRadius: CGFloat = 10
-    let color: Color = .green
-
-    VStack(spacing: 25) {
-      ForEach([false, true], id: \.self) { isDisabled in
-        Button(isDisabled ? "Disabled" : "Enabled") {}
-          .buttonStyle(
-            PixelKit.Styles.SpringyButtonStyle(
-              width: width,
-              height: height,
-              cornerRadius: cornerRadius,
-              color: color,
-              disabled: isDisabled
-            )
-          )
-      }
-    }
-    .previewLayout(.sizeThatFits)
-    .padding()
-  }
-}

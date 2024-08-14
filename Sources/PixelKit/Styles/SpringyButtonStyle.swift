@@ -18,18 +18,20 @@ extension PixelKit.Styles {
   /// 3D-like effect for visual feedback.
   ///
   /// `SpringyButtonStyle` creates buttons with a depth effect,
-  /// giving them a raised appearance when idle and a pressed-down look when held.
-  /// This style is designed to provide clear visual feedback for user interactions.
+  /// giving a raised appearance when idle and a pressed-down look when held.
+  /// This style is designed to provide clear visual feedback for user
+  /// interactions.
   ///
   /// Example usage:
   /// ```swift
+  /// let size: CGSize = CGSizeMake(width: 200, height: 50)
+  ///
   /// Button("Press Me") {
   ///   print("Button pressed!")
   /// }
   /// .buttonStyle(
   ///   SpringyButtonStyle(
-  ///     width: 200,
-  ///     height: 50,
+  ///     size: size,
   ///     cornerRadius: 10,
   ///     color: .blue
   ///   )
@@ -39,11 +41,9 @@ extension PixelKit.Styles {
     /// Whether or not the button is currently being held.
     @State private var isHeld = false
 
-    /// The width of the button.
-    private let width: CGFloat
-
-    /// The height of the button.
-    private let height: CGFloat
+    /// The size of the button.
+    /// This determines both the width and height of the button.
+    private let size: CGSize
 
     /// The corner radius of the button.
     private let cornerRadius: CGFloat
@@ -52,37 +52,35 @@ extension PixelKit.Styles {
     private let color: Color
 
     /// Whether or not the button is disabled.
-    private let disabled: Bool
+    private let isDisabled: Bool
 
     /// Initializes a new `SpringyButtonStyle` style.
     ///
     /// - Parameters:
-    ///   - width: The width of the button.
-    ///   - height: The height of the button.
+    ///   - size: The size of the button.
     ///   - cornerRadius: The corner radius of the button.
     ///   - color: The color of the button.
-    ///   - disabled: Whether or not the button is disabled. Defaults to `false`.
+    ///   - isDisabled: Whether or not the button is disabled. Defaults to
+    /// `false`.
     public init(
-      width: CGFloat,
-      height: CGFloat,
+      size: CGSize,
       cornerRadius: CGFloat,
       color: Color,
-      disabled: Bool = false
+      isDisabled: Bool = false
     ) {
-      self.width = width
-      self.height = height
+      self.size = size
       self.cornerRadius = cornerRadius
       self.color = color
-      self.disabled = disabled
+      self.isDisabled = isDisabled
     }
 
     public func makeBody(configuration: Configuration) -> some View {
       self.buttonContent(configuration: configuration)
         .gesture(
           DragGesture(minimumDistance: 0)
-            .onChanged { _ in self.isHeld = !self.disabled }
+            .onChanged { _ in self.isHeld = !self.isDisabled }
             .onEnded { _ in
-              if !self.disabled {
+              if !self.isDisabled {
                 self.isHeld = false
                 configuration.trigger()
               }
@@ -94,15 +92,15 @@ extension PixelKit.Styles {
       ZStack {
         self.buttonShape
           .fill(self.fillColor)
-          .frame(width: self.width, height: self.height)
-          .overlay(self.buttonShape.stroke(self.strokeColor, lineWidth: 1))
+          .frame(width: self.size.width, height: self.size.height)
+          .overlay(self.buttonShape.stroke(self.fillColor, lineWidth: 1))
           .overlay(self.buttonLabel(configuration: configuration))
           .offset(y: self.offsetY)
           .zIndex(1)
 
         self.buttonShape
           .fill(self.shadowColor)
-          .frame(width: self.width, height: self.height)
+          .frame(width: self.size.width, height: self.size.height)
       }
     }
 
@@ -116,23 +114,19 @@ extension PixelKit.Styles {
         .font(.headline)
         .fontDesign(.rounded)
         .fontWeight(.semibold)
-        .foregroundColor(self.disabled ? .gray : .white)
+        .foregroundColor(self.isDisabled ? .gray : .white)
     }
 
     private var fillColor: Color {
-      self.disabled ? .gray : self.color
-    }
-
-    private var strokeColor: Color {
-      self.disabled ? .gray : self.color
+      self.isDisabled ? .gray : self.color
     }
 
     private var shadowColor: Color {
-      self.disabled ? .gray : self.color.opacity(0.8)
+      self.isDisabled ? .gray : self.color.opacity(0.8)
     }
 
     private var offsetY: CGFloat {
-      self.disabled ? 0 : (self.isHeld ? 0 : -3.8)
+      self.isDisabled ? 0 : (self.isHeld ? 0 : -3.8)
     }
   }
 }

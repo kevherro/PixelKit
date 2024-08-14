@@ -10,7 +10,7 @@
 --indent 2
 --extensionacl on-declarations
 --linebreaks lf
---maxwidth 100
+--maxwidth 80
 --patternlet inline
 --self insert
 --stripunusedargs closure-only

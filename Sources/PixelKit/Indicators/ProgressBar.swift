@@ -71,38 +71,3 @@ extension PixelKit.Indicators {
     }
   }
 }
-
-// MARK: - Preview
-
-struct ProgressBar_Previews: PreviewProvider {
-  static var previews: some View {
-    let totalSteps = 3
-    let color: Color = .green
-    let size: CGSize = CGSizeMake(150, 10)
-
-    VStack(spacing: 20) {
-      PixelKit.Indicators.ProgressBar(
-        currentStep: Binding.constant(0),
-        totalSteps: totalSteps,
-        color: color,
-        size: size
-      )
-
-      PixelKit.Indicators.ProgressBar(
-        currentStep: Binding.constant(1),
-        totalSteps: totalSteps,
-        color: color,
-        size: size
-      )
-
-      PixelKit.Indicators.ProgressBar(
-        currentStep: Binding.constant(2),
-        totalSteps: totalSteps,
-        color: color,
-        size: size
-      )
-    }
-    .previewLayout(.sizeThatFits)
-    .padding()
-  }
-}

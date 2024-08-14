@@ -71,19 +71,3 @@ extension PixelKit.Animations {
     }
   }
 }
-
-// MARK: - Preview
-
-struct Pulse_Previews: PreviewProvider {
-  static var previews: some View {
-    PixelKit.Animations.Pulse(
-      color: .yellow,
-      duration: 1,
-      finalScale: 2,
-      maxWidth: 30.0,
-      repeatForever: true
-    )
-    .previewLayout(.sizeThatFits)
-    .padding()
-  }
-}

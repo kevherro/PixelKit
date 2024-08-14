@@ -17,7 +17,7 @@ import PackageDescription
 
 let package = Package(
   name: "PixelKit",
-  platforms: [.macOS(.v15)],
+  platforms: [.macOS(.v15), .iOS(.v17)],
   products: [
     .library(
       name: "PixelKit",

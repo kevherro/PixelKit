@@ -33,44 +33,22 @@ extension PixelKit.Animations {
   /// ```
   public struct Pulse: View {
     /// The color of the pulsing circle.
-    private let color: Color
+    let color: Color
 
     /// The duration of one pulse animation cycle.
-    private let duration: Double
+    let duration: Double
 
     /// The scale factor the circle reaches at the end of the animation.
-    private let finalScale: CGFloat
+    let finalScale: CGFloat
 
     /// The max width of the circle before animation begins.
-    private let maxWidth: CGFloat
+    let maxWidth: CGFloat
 
     /// Determines whether the pulse animation repeats indefinitely.
-    private let repeatForever: Bool
+    let repeatForever: Bool
 
     /// Tracks whether the animation is currently active.
     @State private var isAnimating = false
-
-    /// Initializes a new `Pulse`.
-    ///
-    /// - Parameters:
-    ///   - color: The color of the pulsing circle.
-    ///   - duration: The duration of one pulse cycle in seconds.
-    ///   - finalScale: The scale factor the circle reaches at the end of the animation.
-    ///   - repeatForever: If true, the pulse repeats indefinitely. If false, it pulses only once.
-    ///   - maxWidth: The max width of the circle before animation begins.
-    public init(
-      color: Color = .white,
-      duration: Double = 0.7,
-      finalScale: CGFloat = 2.0,
-      repeatForever: Bool = false,
-      maxWidth: CGFloat
-    ) {
-      self.color = color
-      self.duration = duration
-      self.finalScale = finalScale
-      self.repeatForever = repeatForever
-      self.maxWidth = maxWidth
-    }
 
     public var body: some View {
       Circle()
@@ -98,8 +76,14 @@ extension PixelKit.Animations {
 
 struct Pulse_Previews: PreviewProvider {
   static var previews: some View {
-    PixelKit.Animations.Pulse(color: .yellow, repeatForever: true, maxWidth: 50.0)
-      .previewLayout(.sizeThatFits)
-      .padding()
+    PixelKit.Animations.Pulse(
+      color: .yellow,
+      duration: 1,
+      finalScale: 2,
+      maxWidth: 30.0,
+      repeatForever: true
+    )
+    .previewLayout(.sizeThatFits)
+    .padding()
   }
 }

@@ -40,19 +40,19 @@ extension PixelKit.Styles {
     @State private var isHeld = false
 
     /// The width of the button.
-    let width: CGFloat
+    private let width: CGFloat
 
     /// The height of the button.
-    let height: CGFloat
+    private let height: CGFloat
 
     /// The corner radius of the button.
-    let cornerRadius: CGFloat
+    private let cornerRadius: CGFloat
 
     /// The color of the button when enabled.
-    let color: Color
+    private let color: Color
 
     /// Whether or not the button is disabled.
-    let disabled: Bool
+    private let disabled: Bool
 
     /// Initializes a new `SpringyButtonStyle` button style.
     ///
@@ -61,7 +61,7 @@ extension PixelKit.Styles {
     ///   - height: The height of the button.
     ///   - cornerRadius: The corner radius of the button.
     ///   - color: The color of the button.
-    ///   - disabled: Whether or not the button is disabled. Defaults to `true`.
+    ///   - disabled: Whether or not the button is disabled.
     public init(
       width: CGFloat,
       height: CGFloat,

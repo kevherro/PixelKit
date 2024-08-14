@@ -17,7 +17,6 @@
 # List of directories to format
 directories=(
   "Sources"
-  "Tests"
 )
 
 # Configuration file

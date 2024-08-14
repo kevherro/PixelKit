@@ -6,7 +6,7 @@ reusable UI components for enhancing your app's user interface.
 ## Features
 
 - Custom button styles (e.g., [SpringyButtonStyle](./Sources/PixelKit/Styles/SpringyButtonStyle.swift))
-- Animated components (e.g., [BlinkingEllipsis](./Sources/PixelKit/Animations/BlinkingEllipsis.swift))
+- Indicators (e.g., [BlinkingEllipsis](./Sources/PixelKit/Indicators/BlinkingEllipsis.swift))
 
 ## Requirements
 

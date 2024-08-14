@@ -21,15 +21,7 @@ extension PixelKit.Styles {
   /// giving them a raised appearance when idle and a pressed-down look when held.
   /// This style is designed to provide clear visual feedback for user interactions.
   ///
-  /// Key features:
-  /// - 3D-like appearance with a shadow effect
-  /// - Raised appearance when idle
-  /// - Animated press-down effect while the button is being held
-  /// - Springs back to raised position when released
-  /// - Customizable size, corner radius, and color
-  /// - Support for disabled state
-  ///
-  /// Usage:
+  /// Example usage:
   /// ```swift
   /// Button("Press Me") {
   ///   print("Button pressed!")
@@ -43,12 +35,6 @@ extension PixelKit.Styles {
   ///   )
   /// )
   /// ```
-  ///
-  /// - Note: This style uses `PrimitiveButtonStyle` to provide custom press handling and
-  /// visual feedback.
-  ///         The button appears raised when not interacted with,
-  ///         moves down when pressed and held,
-  ///         and springs back up when released.
   public struct SpringyButtonStyle: PrimitiveButtonStyle {
     /// Whether or not the button is currently being held.
     @State private var isHeld = false

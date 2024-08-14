@@ -14,7 +14,7 @@
 import Combine
 import SwiftUI
 
-extension PixelKit.Animations {
+extension PixelKit.Indicators {
   /// A view that displays a blinking ellipsis animation.
   ///
   /// `BlinkingEllipsis` creates an animated ellipsis effect using three circles that
@@ -23,19 +23,10 @@ extension PixelKit.Animations {
   /// ongoing processes, or any scenario where a subtle,
   /// repeating animation is desired.
   ///
-  /// Key features:
-  /// - Customizable color
-  /// - Adjustable animation timing
-  /// - Smooth, looping animation
-  /// - Lightweight and easy to integrate
-  ///
-  /// Usage:
+  /// Example usage:
   /// ```swift
   /// BlinkingEllipsis(color: .blue, interval: 0.5)
   /// ```
-  ///
-  /// - Note: This view uses SwiftUI's animation system and a timer publisher
-  ///         to create a smooth, continuously looping animation.
   public struct BlinkingEllipsis: View {
     /// The current index of the circle that should be fully opaque.
     @State private var currentIndex = 0
@@ -88,7 +79,7 @@ extension PixelKit.Animations {
 
 struct BlinkingEllipsis_Previews: PreviewProvider {
   static var previews: some View {
-    PixelKit.Animations.BlinkingEllipsis(color: Color.yellow, interval: 0.2)
+    PixelKit.Indicators.BlinkingEllipsis(color: Color.yellow, interval: 0.2)
       .previewLayout(.sizeThatFits)
       .padding()
   }

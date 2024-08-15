@@ -14,7 +14,7 @@
 import SwiftUI
 
 extension PixelKit.Styles {
-  /// A button style that becomes highlighted when tapped once.
+  /// A button style that becomes highlighted when tapped.
   ///
   /// This style provides visual feedback by changing the button's background
   /// color when tapped once.
@@ -22,7 +22,7 @@ extension PixelKit.Styles {
   ///
   /// Example usage:
   /// ```swift
-  /// @State var hasBeenPressed = false
+  /// @State var isSelected = false
   /// let size: CGSize = CGSizeMake(width: 200, height: 50)
   ///
   /// Button("Press Me") {
@@ -30,7 +30,7 @@ extension PixelKit.Styles {
   /// }
   /// .buttonStyle(
   ///   HighlightableButtonStyle(
-  ///     hasBeenPressed: $hasBeenPressed,
+  ///     isSelected: $isSelected,
   ///     size: size,
   ///     cornerRadius: 10,
   ///     color: .blue,
@@ -39,9 +39,9 @@ extension PixelKit.Styles {
   /// )
   /// ```
   public struct HighlightableButtonStyle: PrimitiveButtonStyle {
-    /// Tracks whether the button has ever been pressed.
+    /// Tracks whether the button is selected.
     /// This is a binding to allow external control of the button.
-    @Binding var hasBeenPressed: Bool
+    @Binding var isSelected: Bool
 
     /// The size of the button.
     /// This determines both the width and height of the button.
@@ -65,8 +65,7 @@ extension PixelKit.Styles {
     /// Initializes a new `HighlightableButtonStyle` style.
     ///
     /// - Parameters:
-    ///   - hasBeenPressed: A binding to whether the button has ever been
-    /// pressed.
+    ///   - isSelected: A binding to whether the button is currently selected.
     ///   - size: The size of the button.
     ///   - cornerRadius: The corner radius of the button.
     ///   - color: The color of the button.
@@ -74,14 +73,14 @@ extension PixelKit.Styles {
     ///   - isDisabled: Whether or not the button is disabled. Defaults to
     /// `false`.
     public init(
-      hasBeenPressed: Binding<Bool>,
+      isSelected: Binding<Bool>,
       size: CGSize,
       cornerRadius: CGFloat,
       color: Color,
       backgroundColor: Color,
       isDisabled: Bool = false
     ) {
-      self._hasBeenPressed = hasBeenPressed
+      self._isSelected = isSelected
       self.size = size
       self.cornerRadius = cornerRadius
       self.color = color
@@ -107,7 +106,7 @@ extension PixelKit.Styles {
           .onEnded { _ in
             if !self.isDisabled {
               self.isPressed = false
-              self.hasBeenPressed = true
+              self.isSelected.toggle()
               configuration.trigger()
             }
           }
@@ -117,7 +116,7 @@ extension PixelKit.Styles {
     private var fillColor: Color {
       self
         .isDisabled ? .gray :
-        (self.hasBeenPressed ? self.color.opacity(0.3) : self.backgroundColor)
+        (self.isSelected ? self.color.opacity(0.3) : self.backgroundColor)
     }
 
     private var offsetY: CGFloat {
@@ -142,7 +141,7 @@ extension PixelKit.Styles {
         .frame(width: self.size.width, height: self.size.height)
         .overlay(
           configuration.label
-            .foregroundColor(self.hasBeenPressed ? self.color : .white)
+            .foregroundColor(self.isSelected ? self.color : .white)
         )
         .offset(y: self.offsetY)
     }
